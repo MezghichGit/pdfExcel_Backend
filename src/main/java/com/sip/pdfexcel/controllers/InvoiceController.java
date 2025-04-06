@@ -2,6 +2,7 @@ package com.sip.pdfexcel.controllers;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDate;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -59,7 +60,7 @@ public class InvoiceController {
 	        }
 
 	        // 👉 Titre
-	        Paragraph title = new Paragraph("FACTURE")
+	        Paragraph title = new Paragraph("FACTURE du : "+LocalDate.now())
 	                .setBold()
 	                .setFontSize(20)
 	                .setTextAlignment(TextAlignment.CENTER)
@@ -100,7 +101,7 @@ public class InvoiceController {
 	                .setTextAlignment(TextAlignment.RIGHT)
 	                .setBold()
 	                .setFontSize(14)
-	                .setBorderTop(new SolidBorder(1))
+	                .setBorderTop(new SolidBorder(2))
 	                .setMarginTop(10);
 	        doc.add(totalPara);
 
@@ -115,7 +116,6 @@ public class InvoiceController {
 	    }
 	}
 
-	
 	/*
 	@PostMapping(value = "/invoice/pdf", produces = MediaType.APPLICATION_PDF_VALUE)
 	public void generateInvoice(@RequestBody InvoiceRequestDTO request, HttpServletResponse response) throws IOException {
@@ -157,8 +157,6 @@ public class InvoiceController {
 
 	        doc.add(table);
 	    }
-	}*/
-	
-	
-
+	}
+	*/
 }
